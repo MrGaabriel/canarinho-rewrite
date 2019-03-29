@@ -1,8 +1,7 @@
 const readline = require("readline-sync")
-const dotenv = require("dotenv")
 const fs = require("fs")
 
-dotenv.config()
+require("dotenv").config()
 
 if (!process.env.TOKEN) {
   console.log("Você não definiu a variável \"TOKEN\" no \".env\"!")
