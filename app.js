@@ -1,13 +1,11 @@
-const readline = require("readline-sync")
-const fs = require("fs")
-
 require("dotenv").config()
 
 if (!process.env.TOKEN) {
-  console.log("Você não definiu a variável \"TOKEN\" no \".env\"!")
+  console.error("Você não definiu a variável \"TOKEN\" no \".env\"!")
+  process.exit(1)
 }
 
-const token = process.env.TOKEN || readline.question("Digite o token: ")
+const token = process.env.TOKEN
 const Canarinho = require("./src/Canarinho")
 
 const bot = new Canarinho()
