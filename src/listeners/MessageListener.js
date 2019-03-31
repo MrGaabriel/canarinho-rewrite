@@ -22,6 +22,8 @@ class MessageListener extends EventListener {
 
           this.canarinho.info("[COMMAND EXECUTED]".yellow, `(${message.guild.name} -> #${message.channel.name}) ${message.author.tag}: ${message.content}`)
 
+          message.channel.startTyping()
+
           const args = rawArgs
           args.shift()
 
@@ -38,6 +40,8 @@ class MessageListener extends EventListener {
 
           this.canarinho.error("[COMMAND EXECUTED]".green, `(${message.guild.name} -> #${message.channel.name}) ${message.author.tag}: ${message.content} - ERROR!\n${err.stack}`)
         }
+
+        message.channel.stopTyping()
       }
     })
   }
