@@ -6,10 +6,10 @@ class EventListener {
 
   run(...args) {}
 
-  register(canarinho) {
-    this.canarinho = canarinho
+  register(client) {
+    this.client = client
 
-    canarinho.on(this.eventName, (...args) => this.run(...args))
+    client.on(this.eventName, (...args) => this.run(...args))
   }
 }
 

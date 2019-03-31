@@ -47,7 +47,7 @@ class Canarinho extends Client {
       const Command = require(`./commands/${file}`)
       const command = new Command()
 
-      this.commands.push(command)
+      command.register(this)
     })
   }
 
