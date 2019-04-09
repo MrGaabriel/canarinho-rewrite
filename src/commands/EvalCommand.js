@@ -6,7 +6,9 @@ const { RichEmbed } = require("discord.js")
 class EvalCommand extends Command {
 
   constructor () {
-    super("eval", ["evaluate"], true)
+    super("eval", ["evaluate"])
+
+    this.onlyOwner = true
   }
 
   async run(message, args) {
