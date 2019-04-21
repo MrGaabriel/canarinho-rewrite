@@ -81,14 +81,22 @@ class Command {
   }
 
   async explain(message) {
-    const label = process.env.PREFIX + this.label
+    const splitted = message.content.split(" ")
+    
+    const usedLabel = splitted[0].replace(process.env.PREFIX, "")
+    const allLabels = [this.label]
+    this.aliases.forEach((alias) => allLabels.push(alias))
+   
+    const unusedLabels = allLabels.filter((label) => label !== usedLabel)
+    
     const embed = new RichEmbed()
 
     embed.setAuthor(message.author.tag, message.author.displayAvatarURL)
 
-    embed.setTitle(":thinking: `" + label + "`")
+    embed.setTitle(":thinking: `" + process.env.PREFIX + usedLabel + "`")
 
     embed.addField(":interrobang: Como usar?", `${label} ${this.usage}`, false)
+    embed.addField(":twisted_rightwards_arrows: Alternativas", `${unusedLabels.map((label) => process.env.PREFIX + label).join(", ")}`, false)
 
     embed.setColor("#2C2F33")
 
