@@ -62,6 +62,11 @@ class Command {
           message.reply("Você não tem permissão para executar este comando!")
           return true
         }
+        
+        if (args[0] === "?") {
+          this.explain(message)
+          return true
+        }
 
         await this.run(message, args)
 
