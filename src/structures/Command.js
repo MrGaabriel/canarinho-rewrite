@@ -26,8 +26,15 @@ class Command {
     const usedLabel = rawArgs[0]
 
     const prefix = process.env.PREFIX
-
-    if (prefix + this.label === usedLabel) {
+    const labels = [this.label]
+    
+    this.aliases.forEach((alias) => {
+      labels.push(alias)
+    })
+    
+    const withPrefixLabels = labels.map((label) => prefix + label)
+    
+    if (withPrefixLabels.includes(usedLabel)) {
       try {
         const start = Date.now()
         this.client.info("[COMMAND EXECUTED]".yellow, `(${message.guild.name} -> #${message.channel.name}) ${message.author.tag}: ${message.content}`)
@@ -88,7 +95,7 @@ class Command {
     embed.setFooter("Executado")
     embed.setTimestamp(new Date())
 
-    message.reply({ embed })
+    message.channel.send({ embed })
   }
 }
 
