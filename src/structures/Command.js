@@ -95,8 +95,8 @@ class Command {
 
     embed.setTitle(":thinking: `" + process.env.PREFIX + usedLabel + "`")
 
-    embed.addField(":interrobang: Como usar?", `${label} ${this.usage}`, false)
-    embed.addField(":twisted_rightwards_arrows: Alternativas", `${unusedLabels.map((label) => process.env.PREFIX + label).join(", ")}`, false)
+    embed.addField(":interrobang: Como usar?", `\`${label} ${this.usage}\``, false)
+    embed.addField(":twisted_rightwards_arrows: Alternativas", `${unusedLabels.map((label) => "`" + process.env.PREFIX + label + "`").join(", ")}`, false)
 
     embed.setColor("#2C2F33")
 
