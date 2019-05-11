@@ -32,7 +32,7 @@ class StocksCommand extends Command {
 			embed.addField("📈 Alta", info.high, true)
 			embed.addField("📉 Baixa", info.low, true)
 			embed.addField("🕖 Abertura", info.open, true)
-			embed.addField("⛔ Último fechamento", info.previousClose, true)
+			embed.addField("⛔ Fechamento anterior", info.previousClose, true)
 			embed.addField("🔀 Mudança", info.change, true)
 			embed.addField("🔀 Mudança %", info.changePercent, true)
 
