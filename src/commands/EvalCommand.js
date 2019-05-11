@@ -5,29 +5,29 @@ const { RichEmbed } = require("discord.js")
 
 class EvalCommand extends Command {
 
-  constructor () {
-    super("eval", ["evaluate"])
+	constructor () {
+		super("eval", ["evaluate"])
 
-    this.onlyOwner = true
-  }
+		this.onlyOwner = true
+	}
 
-  async run(message, args) {
-    const code = args.join(" ")
+	async run(message, args) {
+		const code = args.join(" ")
 
-    try {
-      const evaluated = await eval(code)
+		try {
+			const evaluated = await eval(code)
 
-      message.channel.send(inspect(evaluated, { depth: 0 }), { code: 'xl' })
-    } catch (err) {
-      const embed = new RichEmbed()
-        .setTitle("Um erro inesperado ocorreu enquanto o comando estava sendo executado!")
-        .setDescription("```" + err.stack + "```")
-        .setColor("#FF0000")
-        .setTimestamp(new Date())
+			message.channel.send(inspect(evaluated, { depth: 0 }), { code: 'xl' })
+		} catch (err) {
+			const embed = new RichEmbed()
+				.setTitle("Um erro inesperado ocorreu enquanto o comando estava sendo executado!")
+				.setDescription("```" + err.stack + "```")
+				.setColor("#FF0000")
+				.setTimestamp(new Date())
 
-      message.channel.send({ embed })
-    }
-  }
+			message.channel.send({ embed })
+		}
+	}
 
 }
 
