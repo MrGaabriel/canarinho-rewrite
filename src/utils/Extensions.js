@@ -18,6 +18,14 @@ class Extensions {
     Message.prototype.reply = function (msg, options = {}) {
       return this.channel.send(`${this.author} ${msg}`, options)
     }
+
+    Object.prototype.isEmpty = function() {
+      for(const key in this) {
+        if(this.hasOwnProperty(key))
+          return false
+      }
+      return true
+    }
   }
 
 }
