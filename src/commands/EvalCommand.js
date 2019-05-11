@@ -25,7 +25,7 @@ class EvalCommand extends Command {
         .setColor("#FF0000")
         .setTimestamp(new Date())
 
-      message.reply({ embed })
+      message.channel.send({ embed })
     }
   }
 

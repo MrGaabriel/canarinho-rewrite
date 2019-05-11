@@ -87,7 +87,9 @@ class Command {
 
   async explain(message) {
     const splitted = message.content.split(" ")
-    
+
+    const prefix = process.env.PREFIX
+
     const usedLabel = splitted[0].replace(process.env.PREFIX, "")
     const allLabels = [this.label]
     this.aliases.forEach((alias) => allLabels.push(alias))
@@ -100,7 +102,7 @@ class Command {
 
     embed.setTitle(":thinking: `" + process.env.PREFIX + usedLabel + "`")
 
-    embed.addField(":interrobang: Como usar?", `\`${usedLabel} ${this.usage}\``, false)
+    embed.addField(":interrobang: Como usar?", `\`${prefix + usedLabel} ${this.usage}\``, false)
     embed.addField(":twisted_rightwards_arrows: Alternativas", `${unusedLabels.map((label) => "`" + process.env.PREFIX + label + "`").join(", ")}`, false)
 
     embed.setColor("#2C2F33")
