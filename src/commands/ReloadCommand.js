@@ -15,7 +15,7 @@ class ReloadCommand extends Command {
                 this.client.registerCommands()
 
                 const cmds = this.client.commands
-
+                
                 message.reply(`Comandos recarregados! ${cmds.length} comandos e ${cmds.length - oldCmds.length} novos comandos`)
             }
         }
