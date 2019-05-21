@@ -43,6 +43,8 @@ class Canarinho extends Client {
 	}
 
 	registerCommands() {
+		this.commands = []
+
 		const folder = readSync("./src/commands")
 
 		folder.forEach((file) => {
