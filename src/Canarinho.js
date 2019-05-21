@@ -5,6 +5,8 @@ const { readSync } = require("readdir")
 
 const Extensions = require("./utils/Extensions")
 
+const moment = require("moment")
+
 class Canarinho extends Client {
 
 	constructor (options = {}) {
@@ -52,21 +54,19 @@ class Canarinho extends Client {
 	}
 
 	info(msg, ...args) {
-		const date = new Date()
-
-		console.log(`[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}]`.yellow, `[${"INFO".blue}]`, msg, ...args)
+		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"INFO".blue}]`, msg, ...args)
+	}
+	
+	debug(msg, ...args) {  
+		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"DEBUG".magenta}]`, msg, ...args)
 	}
 
 	warn(msg, ...args) {
-		const date = new Date()
-
-		console.log(`[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}]`.yellow, `[${"WARN".yellow}]`, msg, ...args)
+		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"WARN".yellow}]`, msg, ...args)
 	}
 
 	error(msg, ...args) {
-		const date = new Date()
-
-		console.log(`[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}]`.yellow, `[${"ERROR".red}]`, msg, ...args)
+		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"ERROR".red}]`, msg, ...args)
 	}
 
 }
