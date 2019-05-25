@@ -56,19 +56,19 @@ class Canarinho extends Client {
 	}
 
 	info(msg, ...args) {
-		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"INFO".blue}]`, msg, ...args)
+		console.log(`[${moment().format("HH:mm:ss.SSS")}]`.yellow, `[${"INFO".blue}]`, msg, ...args)
 	}
 	
 	debug(msg, ...args) {  
-		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"DEBUG".magenta}]`, msg, ...args)
+		console.log(`[${moment().format("HH:mm:ss.SSS")}]`.yellow, `[${"DEBUG".magenta}]`, msg, ...args)
 	}
 
 	warn(msg, ...args) {
-		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"WARN".yellow}]`, msg, ...args)
+		console.log(`[${moment().format("HH:mm:ss.SSS")}]`.yellow, `[${"WARN".yellow}]`, msg, ...args)
 	}
 
 	error(msg, ...args) {
-		console.log(`[${moment().format("HH:MM:SS.SSS")}]`.yellow, `[${"ERROR".red}]`, msg, ...args)
+		console.log(`[${moment().format("HH:mm:ss.SSS")}]`.yellow, `[${"ERROR".red}]`, msg, ...args)
 	}
 
 }

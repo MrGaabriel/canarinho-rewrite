@@ -1,5 +1,7 @@
 const { Message } = require("discord.js")
 
+const { URL } = require("url")
+
 class Extensions {
 
 	constructor (client) {
@@ -25,6 +27,20 @@ class Extensions {
 					return false
 			}
 			return true
+		}
+
+		String.prototype.removeCodeMarks = function() {
+			return this.replace("`", "")
+		}
+
+		String.prototype.isValidUrl = function() {
+			try {
+				new URL(this)
+
+				return true
+			} catch (e) {
+				return false
+			}
 		}
 	}
 
