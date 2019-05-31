@@ -3,6 +3,8 @@ require("colors")
 const { Client } = require("discord.js")
 const { readSync } = require("readdir")
 
+const fs = require("fs")
+
 const Extensions = require("./utils/Extensions")
 
 const moment = require("moment")
@@ -21,6 +23,8 @@ class Canarinho extends Client {
 
 			this.registerListeners()
 			this.registerCommands()
+
+			this.setupUserActivities()
 
 			new Extensions(this).loadExtensions()
 
@@ -53,6 +57,26 @@ class Canarinho extends Client {
 
 			command.register(this)
 		})
+	}
+
+	async setupUserActivities() {
+		if (!fs.existsSync("./config/activities.json"))
+			return this.warn("./config/activities.json não existe! Módulo de status do bot não ativado!")
+
+		await this.selectAndChangeActivity()
+
+		setInterval(async () => {
+			await this.selectAndChangeActivity()
+		}, 30 * 1000)
+	}
+
+	async selectAndChangeActivity() {
+		const activities = require("../config/activities.json")
+		const activity = activities[Math.round(Math.random() * (activities.length - 1))]
+
+		this.debug("User activity:", activity)
+
+		await this.user.setActivity(activity.name, {type: activity.type, url: 'https://www.twitch.tv/MrGaabriel'})
 	}
 
 	info(msg, ...args) {
